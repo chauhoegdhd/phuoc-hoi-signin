@@ -1,5 +1,18 @@
 import { useState, useEffect, useRef } from "react";
 
+const users = [
+  {
+    phone: "123",
+    name: "Nguyễn Văn A",
+    redirect: "https://zalo.me/g/mpwwbi831",
+  },
+  {
+    phone: "1234",
+    name: "Trần Thị B",
+    redirect: "https://zalo.me/g/abcxyz123",
+  },
+];
+
 export function Welcome() {
   const [phone, setPhone] = useState("");
   const [message, setMessage] = useState<React.ReactNode>("");
@@ -31,8 +44,6 @@ export function Welcome() {
     }
 
     try {
-      const res = await fetch("/phuoc-hoi-m.json");
-      const users = await res.json();
       const user = users.find((u: any) => u.phone === phone);
 
       if (user) {
