@@ -1,10 +1,23 @@
+import type { Route } from "./+types/traisinh";
 import { useState, useEffect, useRef, useMemo } from "react";
+
+// Nếu bạn không cần loader dữ liệu, export loader rỗng để tránh lỗi GET request
+export async function loader() {
+  return null;
+}
+
+export function meta({}: Route.MetaArgs) {
+  return [
+    { title: "Trại sinh - Phước Hội 2" },
+    { name: "description", content: "Thông tin dành cho trại sinh" },
+  ];
+}
 
 const users = [
   {
     name: "Huỳnh Thị Minh Trâm",
-    phone: "sss",
-    redirect: "https:/sss",
+    phone: "0906xx8",
+    redirect: "x",
   },
 ];
 
@@ -16,7 +29,7 @@ function shuffle<T>(array: T[]): T[] {
   return [...array].sort(() => Math.random() - 0.5);
 }
 
-export function Welcome() {
+export default function TraiSinhPage() {
   const [phone, setPhone] = useState("");
   const [message, setMessage] = useState<React.ReactNode>("");
   const [type, setType] = useState<"success" | "error" | "warning" | "">("");
